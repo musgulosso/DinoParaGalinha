@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 8691379314010074365}
   - component: {fileID: 5139461646766486419}
   - component: {fileID: 2532896452659087299}
-  - component: {fileID: 7472947087204669787}
-  - component: {fileID: 5203044600625659395}
+  - component: {fileID: 2069088313754123212}
   m_Layer: 0
   m_Name: DNA
   m_TagString: DNA
@@ -141,19 +140,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1, y: 3.06}
   m_EdgeRadius: 0
---- !u!114 &7472947087204669787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965523068599485550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9008065f47e818647a7e069a8be4a730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Movimentacao
---- !u!114 &5203044600625659395
+--- !u!114 &2069088313754123212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,4 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0be5b2ce8b4ef49a9c06bedc62b878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DNA
-  _dino: {fileID: -5619054677612274000, guid: c580d592cce7ab14883fbbb1cec53453, type: 3}
+  _dinoPrefab: {fileID: 614728475211342371, guid: 18fb4506ede1d2a49b9175b58e77904c, type: 3}
+  _galinhaPrefab: {fileID: 6495213701703536559, guid: 7c6ca06a6c3cdbf48a8059a7cbbddcc8, type: 3}

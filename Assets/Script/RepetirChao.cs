@@ -20,7 +20,7 @@ public class RepetirChao : MonoBehaviour
                 _chaoInstanciado = true;
 
                 //Então crio um variavel da classe GameObject que recebe a instancia com os devidos valores, que tem o objeto préfabricado
-                GameObject ObjetoTemporarioChao = Instantiate(_gameController._gamePrefab);
+                GameObject ObjetoTemporarioChao = Instantiate(_gameController._gamePrefabChao);
 
                 /*
                 To pegando o objeto que vai ser criado e dando uma nova posição, para isso eu pego a posição e dou mais o tamanho dele,
@@ -43,7 +43,7 @@ public class RepetirChao : MonoBehaviour
     
     void MoveChao()
     {   
-        transform.Translate(Vector2.left * _gameController._chaoVelocidade * Time.deltaTime);
+        transform.Translate(Vector2.left * _gameController._velocidade * Time.deltaTime);
         /*tranform e o tranlate é para mudar a posição do objeto
         Vector2 é por causa que só usaremos X e Y, multiplicamos pelo valor da velocidade e o deltaTime é para não mudar de valor independente do tempo*/
     }

@@ -1,20 +1,39 @@
 using UnityEngine;
+using UnityEngine.Timeline;
+using UnityEngine.UIElements;
 
 public class FOGO : MonoBehaviour
 {
-    public Sprite _frango;
-    public Sprite _dinoMorto;
+    public Sprite       _frango;
+    public Sprite       _dinoMorto;
 
+    // é um jeito de aparecer no inspetor, mas que não afete o código, ou que eu manipule em outras classes, afinal, é private
+    [SerializeField] private bool _fogoInstanciado = false;
+
+    
     private GameController _gameController;
 
     void Start()
     {
-        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _gameController = FindAnyObjectByType<GameController>();
     }
 
     void Update()
     {
-        
+        if (_fogoInstanciado == false)
+        {
+            if (transform.position.x <= 0)
+            {
+                _fogoInstanciado = true;
+
+                GameObject fogo = Instantiate(_gameController._gamePrefabFogo);
+                fogo.transform.position = new Vector3(transform.position.x + 30, transform.position.y, transform.position.z);
+            }
+        }
+        if (transform.position.x < _gameController._fogoDestruido)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collison)
@@ -28,7 +47,7 @@ public class FOGO : MonoBehaviour
                     sr.sprite = _frango;
                 collison.transform.localScale = new Vector3(-0.6106539f, 0.6609f, 1f);
 
-                _gameController._chaoVelocidade = 0;
+                _gameController._velocidade = 0;
                 Destroy(gameObject);
                 Debug.Log("Morreu");
             }
@@ -39,10 +58,18 @@ public class FOGO : MonoBehaviour
                     sr.sprite = _dinoMorto;
                 collison.transform.localScale = new Vector3(-0.6106539f, 0.6609f, 1f);
 
-                _gameController._chaoVelocidade = 0;
+                _gameController._velocidade = 0;
                 Destroy(gameObject);
                 Debug.Log("Morreu");
             }
         }
+    }
+    private void FixedUpdate()
+    {
+        MoveFogo();
+    }
+    private void MoveFogo()
+    {
+        transform.Translate(Vector2.left * _gameController._velocidade  * Time.deltaTime);
     }
 }
